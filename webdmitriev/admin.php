@@ -1,6 +1,27 @@
 <?php
 
 /**
+ * Preconnect для оптимизации загрузки шрифтов
+ */
+function my_theme_add_font_preconnect() {
+  echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+}
+add_action('wp_head', 'my_theme_add_font_preconnect', 1);
+
+/**
+ * Add css, js, fonts
+ */
+function webdmitriev_scripts() {
+  wp_enqueue_style('my-theme-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap', array(), null);
+	wp_enqueue_style( 'webdmitriev-css', get_template_directory_uri() . '/webdmitriev/assets/scss/app.css', array(), '1.0.0' );
+
+	wp_enqueue_script( 'webdmitriev-app', get_template_directory_uri() . '/webdmitriev/assets/js/app.js', array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'webdmitriev_scripts' );
+
+
+/**
  * Add custom color for theme
  */
 function my_theme_add_admin_page() {
@@ -122,23 +143,63 @@ function my_theme_custom_color_callback() {
   <?php
 }
 
+// Функция для осветления цвета на 10%
+function my_theme_lighten_color($hex, $percent = 10) {
+  // Убеждаемся, что процент в пределах 0-100
+  $percent = max(0, min(100, $percent));
+
+  // Удаляем # из начала, если есть
+  $hex = str_replace('#', '', $hex);
+
+  // Если короткая запись цвета (например, #ABC), расширяем до полной (#AABBCC)
+  if (strlen($hex) == 3) {
+      $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+  }
+
+  // Проверяем, что цвет в правильном формате
+  if (strlen($hex) != 6) {
+      return '#' . $hex; // Возвращаем как есть, если формат неправильный
+  }
+
+  // Разбиваем на RGB компоненты
+  $r = hexdec(substr($hex, 0, 2));
+  $g = hexdec(substr($hex, 2, 2));
+  $b = hexdec(substr($hex, 4, 2));
+
+  // Осветляем каждый компонент
+  $r = min(255, round($r + (255 - $r) * ($percent / 100)));
+  $g = min(255, round($g + (255 - $g) * ($percent / 100)));
+  $b = min(255, round($b + (255 - $b) * ($percent / 100)));
+
+  // Преобразуем обратно в HEX и форматируем
+  $r_hex = str_pad(dechex($r), 2, '0', STR_PAD_LEFT);
+  $g_hex = str_pad(dechex($g), 2, '0', STR_PAD_LEFT);
+  $b_hex = str_pad(dechex($b), 2, '0', STR_PAD_LEFT);
+
+  return '#' . $r_hex . $g_hex . $b_hex;
+}
+
 // Динамически добавляем CSS в <head>
 function my_theme_dynamic_css() {
-  $color_choice = get_option( 'my_theme_color_choice', 'custom' );
-  $accent_color = get_option( 'my_theme_accent_color', '#21759b' );
+  $color_choice = get_option('my_theme_color_choice', 'custom');
+  $accent_color = get_option('my_theme_accent_color', '#21759b');
 
   if ($color_choice === 'color1') {
     $accent_color = '#8A9A5B';
   } elseif ($color_choice === 'color2') {
     $accent_color = '#d78a48';
   }
+
+  // Создаем осветленную версию цвета
+  $accent_color_light = my_theme_lighten_color($accent_color, 20);
   ?>
   <style type="text/css">
     :root {
       --accent-color: <?php echo $accent_color; ?>;
+      --accent-color-light: <?php echo $accent_color_light; ?>;
     }
   </style>
   <?php
 }
-add_action( 'wp_head', 'my_theme_dynamic_css' );
+add_action('wp_head', 'my_theme_dynamic_css');
 ?>
