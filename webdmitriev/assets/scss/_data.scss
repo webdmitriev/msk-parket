@@ -68,6 +68,13 @@ $indent: 10px;
       max-width: calc(100% - 65px);
     }
   }
+  &.btn-transparent {
+    padding: 20px 40px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: $white;
+    border: 1px solid $white;
+  }
   &.btn-icon-timer {
     display: flex;
     flex-wrap: wrap;
