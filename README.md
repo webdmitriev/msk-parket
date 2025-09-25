@@ -1,4 +1,4 @@
-# msk-parket - Wordpress (Gutenberg) project
+# MSK PARKET - Wordpress (Gutenberg) project
 
 
 ## 🚀 Possibilities
