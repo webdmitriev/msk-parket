@@ -3,8 +3,8 @@
  * Conference - Block
  */
 
-$block_path = 'block-03';
-$gutenberg_title = 'Block - 03';
+$block_path = 'block-05';
+$gutenberg_title = 'Block - 05';
 
 $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
@@ -20,7 +20,7 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-03">
+<section class="block-05" style="<?php echo $bg_1920; ?>">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenberg-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
@@ -29,13 +29,7 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
 
   <?php if( !is_admin() ) : ?>
     <div class="container">
-      <div class="bricks-wrapper">
-        <img class="bricks__image" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-03/image-01.jpg" alt="Image" />
-        <div class="bricks__content">
-          <img class="bricks__content-icon" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/icons/icon-bricks.svg" alt="Image" />
-          <p class="descr uppercase bold accent-color">Заметим: вы&nbsp;получаете не&nbsp;просто услугу&nbsp;&mdash; вы&nbsp;получаете обновлённый интерьер с&nbsp;гарантией качества.</p>
-        </div>
-      </div>
+      <?= $text; ?>
     </div>
   <?php endif; ?>
 </section>

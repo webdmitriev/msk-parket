@@ -121,6 +121,10 @@ a.btn {
   color: var(--accent-color) !important;
 }
 
+.accent-bg {
+  background-color: var(--accent-color) !important;
+}
+
 .bold {
   font-weight: bold !important;
 }
@@ -319,7 +323,184 @@ a.btn {
   position: relative;
   display: block;
   width: 100%;
+  padding-bottom: 40px;
   background-color: #f5f5f5;
+}
+.block-03 .bricks-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  min-height: 195px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+.block-03 .bricks-wrapper .bricks__image {
+  display: block;
+  width: 100%;
+  max-width: 636px;
+  height: inherit;
+  object-fit: cover;
+}
+.block-03 .bricks-wrapper .bricks__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: calc(100% - 661px);
+  padding-block: 46px;
+  padding-right: 80px;
+}
+.block-03 .bricks-wrapper .bricks__content .bricks__content-icon {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.block-03 .bricks-wrapper .bricks__content .descr {
+  max-width: calc(100% - 125px);
+}
+
+@media (max-width: 1480px) {
+  .block-03 .bricks-wrapper .bricks__image {
+    max-width: 50%;
+  }
+  .block-03 .bricks-wrapper .bricks__content {
+    max-width: calc(50% - 25px);
+  }
+}
+@media (max-width: 991px) {
+  .block-03 .bricks-wrapper .bricks__image {
+    display: none;
+  }
+  .block-03 .bricks-wrapper .bricks__content {
+    max-width: 100%;
+    padding-left: 80px;
+  }
+}
+@media (max-width: 576px) {
+  .block-03 .bricks-wrapper {
+    min-height: auto;
+  }
+  .block-03 .bricks-wrapper .bricks__content {
+    padding: 16px 20px;
+  }
+  .block-03 .bricks-wrapper .bricks__content .descr {
+    font-size: 15px;
+  }
+}
+@media (max-width: 460px) {
+  .block-03 .bricks-wrapper .bricks__content {
+    padding-inline: 16px;
+  }
+  .block-03 .bricks-wrapper .bricks__content .descr {
+    font-size: 14px;
+  }
+}
+.block-04 {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-bottom: 60px;
+  background-color: #f5f5f5;
+}
+.block-04 .line-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+}
+.block-04 .line-wrap > picture {
+  display: none;
+}
+.block-04 .block__items {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  gap: 40px;
+  width: 100%;
+  max-width: calc(50% - 12px);
+}
+.block-04 .block__items .block__item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 24px 16px 24px 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+.block-04 .block__items .block__item::before {
+  content: attr(data-number);
+  position: absolute;
+  left: 16px;
+  top: 22px;
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #28211f;
+}
+.block-04 .block__items .block__item .descr {
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.block-04 .block__items .block__item.accent-bg {
+  color: #ffffff;
+}
+.block-04 .block__items .block__item.accent-bg:before {
+  color: #ffffff;
+}
+.block-04 .block__items .block__items-image {
+  display: block;
+  width: 100%;
+  height: inherit;
+  max-height: 334px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 991px) {
+  .block-04 .line-wrap {
+    gap: 16px;
+  }
+  .block-04 .line-wrap > picture {
+    display: block;
+    width: 100%;
+  }
+  .block-04 .line-wrap .block-image {
+    display: block;
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .block-04 .block__items .block__items-image {
+    display: none;
+  }
+  .block-04 .block__items {
+    gap: 16px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .block-04 {
+    padding-bottom: 24px;
+  }
+}
+.block-05 {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-block: 60px;
+  background-color: #ffffff;
 }
 
 @media (hover: hover) and (pointer: fine) {
