@@ -10,17 +10,22 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 
 $allowed_tags = array(
-  'br'  => array()
+  'br'    => array(),
+  'span'  => array(
+    'class' => array(),
+  )
 );
 
-$text     = wp_kses(get_field('text'), $allowed_tags);
-$link     = esc_url(get_field('link'));
-$bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field('bg_1920')) . ")"  : false;
+$block_id   = wp_kses(get_field('block_id'), $allowed_tags);
+$block_bgc  = get_field('block_bgc') ? 'background-color:' . get_field('block_bgc') : false;
+
+$title      = wp_kses(get_field('title'), $allowed_tags);
+$elements   = get_field('faq'); // title, descr
 
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-10">
+<section class="block-10" id="<?= $block_id; ?>" style="<?= $block_bgc; ?>">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenberg-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
@@ -29,44 +34,20 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
 
   <?php if( !is_admin() ) : ?>
     <div class="container">
-      <h2 class="h2"><span class="accent-color">FAQ</span> - часто задаваемые вопросы</h2>
+      <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+
       <div class="accordion__items">
-        <div class="accordion__item">
-          <div class="accordion__item-header">
-            <p class="descr">Что такое еврошлифовка?</p>
-            <div class="icon-accordion"></div>
+        <?php if( have_rows('faq') ) : while ( have_rows('faq') ) : the_row(); ?>
+          <div class="accordion__item">
+            <div class="accordion__item-header">
+              <p class="descr"><?= get_sub_field('title'); ?></p>
+              <div class="icon-accordion"></div>
+            </div>
+            <div class="accordion__item-content">
+              <p class="descr"><?= get_sub_field('descr'); ?></p>
+            </div>
           </div>
-          <div class="accordion__item-content">
-            <p class="descr">Это безпылевая шлифовка с&nbsp;использованием современных дисковых машин и&nbsp;пылеотводов, обеспечивающая высокую точность обработки. Еврошлифовка выполняется в&nbsp;случаях когда паркету менее 10&nbsp;лет, либо когда нужно сделать тонировку или покрыть его маслом.</p>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <div class="accordion__item-header">
-            <p class="descr">Что такое циклевка паркета?</p>
-            <div class="icon-accordion"></div>
-          </div>
-          <div class="accordion__item-content">
-            <p class="descr">Это безпылевая шлифовка с&nbsp;использованием современных дисковых машин и&nbsp;пылеотводов, обеспечивающая высокую точность обработки. Еврошлифовка выполняется в&nbsp;случаях когда паркету менее 10&nbsp;лет, либо когда нужно сделать тонировку или покрыть его маслом.</p>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <div class="accordion__item-header">
-            <p class="descr">Поможет&nbsp;ли шлифовка при глубоких царапинах на&nbsp;паркете?</p>
-            <div class="icon-accordion"></div>
-          </div>
-          <div class="accordion__item-content">
-            <p class="descr">Это безпылевая шлифовка с&nbsp;использованием современных дисковых машин и&nbsp;пылеотводов, обеспечивающая высокую точность обработки. Еврошлифовка выполняется в&nbsp;случаях когда паркету менее 10&nbsp;лет, либо когда нужно сделать тонировку или покрыть его маслом.</p>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <div class="accordion__item-header">
-            <p class="descr">Что нужно сделать в&nbsp;комнате перед шлифовкой паркета?</p>
-            <div class="icon-accordion"></div>
-          </div>
-          <div class="accordion__item-content">
-            <p class="descr">Это безпылевая шлифовка с&nbsp;использованием современных дисковых машин и&nbsp;пылеотводов, обеспечивающая высокую точность обработки. Еврошлифовка выполняется в&nbsp;случаях когда паркету менее 10&nbsp;лет, либо когда нужно сделать тонировку или покрыть его маслом.</p>
-          </div>
-        </div>
+        <?php endwhile; endif; ?>
       </div>
     </div>
   <?php endif; ?>
