@@ -41,7 +41,7 @@ $master_image   = esc_url(get_field('master_image'));
     <div class="container">
       <div class="line-wrap">
         <div class="block__content">
-          <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+          <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
           <?php if($sub_title): ?><p class="descr bold"><?= $sub_title; ?></p><?php endif; ?>
           <?= $cf7 ?? do_shortcode($cf7); ?>
         </div>

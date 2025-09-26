@@ -36,7 +36,7 @@ $cf7        = get_field('cf7');
 
   <?php if( !is_admin() ) : ?>
     <div class="container">
-      <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+      <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
 
       <?php if( have_rows('elements') ) : ?>
         <div class="grinding-arrows">

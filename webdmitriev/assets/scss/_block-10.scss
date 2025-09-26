@@ -17,6 +17,9 @@
     .accordion__item {
       width: 100%;
       max-width: calc(50% - 12px);
+      padding: 36px;
+      background-color: $white;
+      border-radius: 8px;
       .accordion__item-header {
         display: flex;
         flex-wrap: wrap;
@@ -25,6 +28,7 @@
         width: 100%;
         .descr {
           max-width: calc(100% - 70px);
+          margin: 0;
           font-family: $inter;
           font-weight: 700;
           font-size: 24px;

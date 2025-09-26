@@ -34,7 +34,7 @@ $elements   = get_field('faq'); // title, descr
 
   <?php if( !is_admin() ) : ?>
     <div class="container">
-      <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+      <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
 
       <div class="accordion__items">
         <?php if( have_rows('faq') ) : while ( have_rows('faq') ) : the_row(); ?>

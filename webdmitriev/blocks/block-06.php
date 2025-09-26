@@ -41,7 +41,7 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
 
   <?php if( !is_admin() ) : ?>
     <div class="container">
-      <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+      <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
 
       <div class="block__items">
         <?php if( have_rows('elements') ) : $counter = 0; while ( have_rows('elements') ) : the_row(); ?>

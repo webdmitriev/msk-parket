@@ -47,7 +47,7 @@ $elements  = get_field('social_list'); // icon, link
   <?php if( !is_admin() ) : ?>
     <div class="container">
       <div class="line-wrap">
-        <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+        <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
         <div class="block__quote">
           <?php if($block_descr): ?><p class="descr icons-quote"><?= $block_descr; ?></p><?php endif; ?>
 

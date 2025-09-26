@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Register menu
+ */
 function webdmitriev_register_menus() {
   register_nav_menus(
     array(
@@ -10,6 +13,22 @@ function webdmitriev_register_menus() {
   );
 }
 add_action('after_setup_theme', 'webdmitriev_register_menus');
+
+
+/**
+ * Options page
+ */
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page(array(
+    'page_title' => 'Опции',
+    'menu_title' => 'Опции',
+    'menu_slug' => 'theme-general-settings',
+    'capability' => 'edit_posts',
+    'update_button' => __('Обновить', 'acf'),
+    'redirect' => false
+  ));
+}
+
 
 /**
  * Preconnect для оптимизации загрузки шрифтов

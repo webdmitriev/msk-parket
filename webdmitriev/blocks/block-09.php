@@ -34,7 +34,7 @@ $elements   = get_field('elements'); // title, image, descr, price, rating
 
   <?php if( !is_admin() ) : ?>
     <div class="container">
-      <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+      <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
 
       <?php if( have_rows('elements') ) : ?>
         <div class="varnishes__arrows">

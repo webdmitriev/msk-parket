@@ -40,7 +40,7 @@ $elements           = get_field('elements'); // title, image, descr
   <?php if( !is_admin() ) : ?>
     <div class="container">
       <div class="line-wrap">
-        <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+        <?php if($title): ?><span class="h2"><?= $title; ?></span><?php endif; ?>
         <?php if($sub_title): ?><p class="descr"><?= $sub_title; ?></p><?php endif; ?>
         <?php if($sub_title_2): ?><p class="descr uppercase bold accent-color"><?= $sub_title_2; ?></p><?php endif; ?>
 

@@ -37,15 +37,15 @@
 				?>
 
         <div class="header__socials">
-          <a href="#" target="_blank" rel="noopener noreferrer" class="header__social"><img src="<?= get_template_directory_uri(); ?>/webdmitriev/assets/img/icons/icon-header-tg.png" alt="Social" /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="header__social"><img src="<?= get_template_directory_uri(); ?>/webdmitriev/assets/img/icons/icon-header-wa.png" alt="Social" /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="header__social"><img src="<?= get_template_directory_uri(); ?>/webdmitriev/assets/img/icons/icon-header-email.png" alt="Social" /></a>
+					<?php if( have_rows('socials', 'options') ) : while ( have_rows('socials', 'options') ) : the_row(); ?>
+						<a href="<?= get_sub_field('link'); ?>" target="_blank" rel="noopener noreferrer" class="header__social"><img src="<?= get_sub_field('icon'); ?>" alt="Social" /></a>
+					<?php endwhile; endif; ?>
         </div>
 
         <div class="header__contacts">
-          <span class="descr">8:00 - 20:00 без выходных</span>
-          <a href="tel:+7" class="header__contacts-mobile">+7 (963) 963-66-66</a>
-          <a href="tel:+7" class="descr">Обратный звонок</a>
+					<?php if(get_field('time_work', 'options')): ?><span class="descr"><?= get_field('time_work', 'options'); ?></span><?php endif; ?>
+					<?php if(get_field('phone_text', 'options')): ?><a href="tel:<?= get_field('phone_code', 'options'); ?>" class="header__contacts-mobile"><?= get_field('phone_text', 'options'); ?></a><?php endif; ?>
+					<?php if(get_field('btn_text', 'options')): ?><a href="tel:<?= get_field('btn_code', 'options'); ?>" class="descr"><?= get_field('btn_text', 'options'); ?></a><?php endif; ?>
         </div>
 
         <div class="burger-menu"><span></span></div>

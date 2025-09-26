@@ -6,7 +6,7 @@
           <div class="block__title">Навигация по сайту</div>
           <?php
             wp_nav_menu( [
-              'theme_location'  => 'mobile-menu',
+              'theme_location'  => 'footer-menu',
               'menu'            => '',
               'container'       => '',
               'container_class' => '',
@@ -27,14 +27,14 @@
         </div>
         <div class="footer__block">
           <div class="block__title">Связаться с нами</div>
-          <a class="footer-email" href="mailto:mosparket@mail.ru">mosparket@mail.ru</a>
-          <p class="descr">8:00 - 20:00 без выходных</p>
-          <a class="footer-phone" href="tel:+79639636666">+7 (963) 963-66-66</a>
-          <button class="btn">Хочу консультацию</button>
+          <?php if(get_field('footer_email', 'options')): ?><a class="footer-email" href="mailto:<?= get_field('footer_email', 'options'); ?>"><?= get_field('footer_email', 'options'); ?></a><?php endif; ?>
+          <?php if(get_field('footer_work_time', 'options')): ?><p class="descr"><?= get_field('footer_work_time', 'options'); ?></p><?php endif; ?>
+          <?php if(get_field('footer_phone_text', 'options')): ?><a class="footer-phone" href="tel:<?= get_field('footer_phone_code', 'options'); ?>"><?= get_field('footer_phone_text', 'options'); ?></a><?php endif; ?>
+          <?php if(get_field('footer_btn_text', 'options')): ?><button class="btn <?= get_field('footer_btn_class', 'options'); ?>"><?= get_field('footer_btn_text', 'options'); ?></button><?php endif; ?>
           <div class="footer__socials">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="footer__social"><img src="<?= get_template_directory_uri(); ?>/webdmitriev/assets/img/icons/icon-header-tg.png" alt="Social" /></a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="footer__social"><img src="<?= get_template_directory_uri(); ?>/webdmitriev/assets/img/icons/icon-header-wa.png" alt="Social" /></a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="footer__social"><img src="<?= get_template_directory_uri(); ?>/webdmitriev/assets/img/icons/icon-header-email.png" alt="Social" /></a>
+            <?php if( have_rows('footer_socials', 'options') ) : while ( have_rows('footer_socials', 'options') ) : the_row(); ?>
+              <a href="<?= get_sub_field('link'); ?>" target="_blank" rel="noopener noreferrer" class="footer__social"><img src="<?= get_sub_field('icon'); ?>" alt="Social" /></a>
+            <?php endwhile; endif; ?>
           </div>
         </div>
         <div class="footer__copyright">

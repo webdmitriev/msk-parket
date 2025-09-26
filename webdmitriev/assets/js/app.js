@@ -1,12 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
+  // ******
+  // header
+  // ******
   $('.burger-menu').on('click', function () {
     $('.header-mobile').addClass('active')
   })
   $('.burger-close').on('click', function () {
     $('.header-mobile').removeClass('active')
   })
+
+  // ******
+  // scroll
+  // ******
+  $("body").on('click', ".ancLinks, .ancLinks a", function () {
+    console.log($(this));
+    let elementClick = $(this).attr("href");
+    let destination = Math.round($(elementClick).offset().top);
+    $("html,body").animate({ scrollTop: destination - 100 }, 1100);
+    $('.header-mobile.active').removeClass('active')
+    return false;
+  });
 
   // *******
   // SLIDERS
