@@ -10,18 +10,27 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 
 $allowed_tags = array(
-  'br'  => array()
+  'br'    => array(),
+  'span'  => array(
+    'class' => array(),
+  )
 );
 
-$text     = wp_kses(get_field('text'), $allowed_tags);
-$link     = esc_url(get_field('link'));
-$bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field('bg_1920')) . ")"  : false;
-$cf7      = '[contact-form-7 id="f4c613a" title="block-05"]';
+$block_id       = wp_kses(get_field('block_id'), $allowed_tags);
+$block_bgc      = get_field('block_bgc') ? 'background-color:' . get_field('block_bgc') : false;
+
+$title          = wp_kses(get_field('title'), $allowed_tags);
+$sub_title      = wp_kses(get_field('sub_title'), $allowed_tags);
+$cf7            = get_field('cf7');
+
+$master_name    = wp_kses(get_field('master_name'), $allowed_tags);
+$master_role    = wp_kses(get_field('master_role'), $allowed_tags);
+$master_image   = esc_url(get_field('master_image'));
 
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-05">
+<section class="block-05" id="<?= $block_id; ?>" style="<?= $block_bgc; ?>">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenberg-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
@@ -32,15 +41,15 @@ $cf7      = '[contact-form-7 id="f4c613a" title="block-05"]';
     <div class="container">
       <div class="line-wrap">
         <div class="block__content">
-          <h2 class="h2">Не откладывайте: ваш пол достоин <br/><span class="accent-color">второго шанса.</span></h2>
-          <p class="descr bold">Запишитесь на&nbsp;бесплатную консультацию уже сегодня.</p>
+          <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+          <?php if($sub_title): ?><p class="descr bold"><?= $sub_title; ?></p><?php endif; ?>
           <?= $cf7 ?? do_shortcode($cf7); ?>
         </div>
         <div class="block__master">
-          <img class="block__master-image" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-05/master-01.png" alt="Image" />
+          <?php if($master_image): ?><img class="block__master-image" src="<?= $master_image; ?>" alt="Image" /><?php endif; ?>
           <div class="block__master-about">
-            <p class="descr bold accent-color">Андрей</p>
-            <p class="descr">Старший мастер</p>
+            <?php if($master_name): ?><p class="descr bold accent-color"><?= $master_name; ?></p><?php endif; ?>
+            <?php if($master_role): ?><p class="descr"><?= $master_role; ?></p><?php endif; ?>
           </div>
         </div>
       </div>
