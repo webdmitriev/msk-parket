@@ -57,6 +57,7 @@
           width: 100%;
           margin-bottom: 8px;
         }
+        button,
         a {
           display: block;
           width: 100%;
@@ -66,6 +67,8 @@
           text-transform: capitalize;
           text-decoration: underline;
           color: $text;
+          background-color: transparent;
+          border: none;
         }
       }
     }

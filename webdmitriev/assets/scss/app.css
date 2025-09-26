@@ -912,6 +912,7 @@ a.btn {
   width: 100%;
   margin-bottom: 8px;
 }
+.block-07 .block__quote .descr.descr-quote button,
 .block-07 .block__quote .descr.descr-quote a {
   display: block;
   width: 100%;
@@ -921,6 +922,8 @@ a.btn {
   text-transform: capitalize;
   text-decoration: underline;
   color: #28211f;
+  background-color: transparent;
+  border: none;
 }
 .block-07 .block__owner {
   position: relative;

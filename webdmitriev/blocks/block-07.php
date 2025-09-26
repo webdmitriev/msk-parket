@@ -10,17 +10,34 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 
 $allowed_tags = array(
-  'br'  => array()
+  'br'    => array(),
+  'span'  => array(
+    'class' => array(),
+  )
 );
 
-$text     = wp_kses(get_field('text'), $allowed_tags);
-$link     = esc_url(get_field('link'));
-$bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field('bg_1920')) . ")"  : false;
+$block_id = wp_kses(get_field('block_id'), $allowed_tags);
+$block_bgc      = get_field('block_bgc') ? 'background-color:' . get_field('block_bgc') : false;
+
+$title  = wp_kses(get_field('title'), $allowed_tags);
+$block_descr  = wp_kses(get_field('block_descr'), $allowed_tags);
+$block_quote  = wp_kses(get_field('block_quote'), $allowed_tags);
+$btn_text  = wp_kses(get_field('btn_text'), $allowed_tags);
+$btn_class  = wp_kses(get_field('btn_class'), $allowed_tags);
+
+$name  = wp_kses(get_field('name'), $allowed_tags);
+$role  = wp_kses(get_field('role'), $allowed_tags);
+$image  = esc_url(get_field('image'));
+$sub_title  = wp_kses(get_field('sub_title'), $allowed_tags);
+$phone_text  = wp_kses(get_field('phone_text'), $allowed_tags);
+$phone_code  = wp_kses(get_field('phone_code'), $allowed_tags);
+
+$elements  = get_field('social_list'); // icon, link
 
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-07">
+<section class="block-07" id="<?= $block_id; ?>" style="<?= $block_bgc; ?>">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenberg-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
@@ -30,13 +47,16 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
   <?php if( !is_admin() ) : ?>
     <div class="container">
       <div class="line-wrap">
-        <h2 class="h2">Слово от первого лица</h2>
+        <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
         <div class="block__quote">
-          <p class="descr icons-quote">Когда мы&nbsp;начинали заниматься шлифовкой паркета, многие думали, что это просто&nbsp;&mdash; включил машину, прошёлся и&nbsp;готово. Но&nbsp;за&nbsp;каждым идеально отреставрированным полом&nbsp;&mdash; десятки часов точной, почти ювелирной работы. Наш подход&nbsp;&mdash; это сочетание немецкого оборудования, проверенных материалов и&nbsp;опыта мастеров, которые знают, как раскрыть красоту дерева. <br/><br/>Мы&nbsp;ценим доверие клиентов, поэтому всегда даём гарантию на&nbsp;работы. Ведь наша цель&nbsp;&mdash; не&nbsp;просто восстановить пол, а&nbsp;подарить вам удовольствие от&nbsp;каждого шага по&nbsp;нему. И&nbsp;да, мы&nbsp;действительно приезжаем уже через два часа после звонка. Проверено временем и&nbsp;трафиком Москвы&laquo;,&nbsp;&mdash; отметил директор компании &laquo;ЛенПаркет&raquo;.</p>
-          <p class="descr descr-quote">
-            <span>Убедитесь в&nbsp;профессионализме на&nbsp;практике&nbsp;&mdash; оставьте заявку и&nbsp;получите консультацию бесплатно</span>
-            <a href="#">Заказать консультацию</a>
-          </p>
+          <?php if($block_descr): ?><p class="descr icons-quote"><?= $block_descr; ?></p><?php endif; ?>
+
+          <?php if($block_quote): ?>
+            <p class="descr descr-quote">
+              <?php if($block_quote): ?><span><?= $block_quote; ?></span><?php endif; ?>
+              <?php if($btn_text): ?><button class="<?= $btn_class; ?>"><?= $btn_text; ?></button><?php endif; ?>
+            </p>
+          <?php endif; ?>
         </div>
         <div class="block__owner">
           <img class="block__owner-image" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-07/owner-01.png" alt="Image" />
