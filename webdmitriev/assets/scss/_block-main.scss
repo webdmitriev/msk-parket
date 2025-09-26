@@ -1,0 +1,264 @@
+.block-main {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-block: 60px 20px;
+  background-color: $white;
+  .line-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+  .block__left {
+    display: block;
+    width: 100%;
+    max-width: 636px;
+    .h1 {
+      display: block;
+      width: 100%;
+      margin-bottom: 16px;
+      font-family: $inter;
+      font-weight: 500;
+      font-size: 52px;
+      line-height: 1.2;
+      color: $text;
+    }
+    .descr {
+      margin-bottom: 24px;
+      font-size: 22px;
+    }
+    .block__container {
+      display: block;
+      width: 100%;
+      max-width: 432px;
+      padding: 26px 32px 12px 32px;
+      background-color: $text;
+      border-radius: 16px;
+      .block__container-title {
+        display: block;
+        width: 100%;
+        margin-bottom: 16px;
+        font-family: $inter;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1.2;
+        color: $white;
+      }
+      .block__container-descr {
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+        font-family: $inter;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.2;
+        color: $white;
+      }
+      .wpcf7 .wpcf7-form .wpcf7-submit.icon-calculator {
+        font-size: 22px;
+      }
+    }
+  }
+  .block__right {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 658px;
+    .block__image {
+      display: block;
+      width: 100%;
+      max-width: 580px;
+      height: inherit;
+      margin: 0 0 0 auto;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .block__items {
+      position: absolute;
+      bottom: 0;
+      right: -4px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: stretch;
+      gap: 14px;
+      width: 100%;
+      .block__item {
+        display: block;
+        width: 100%;
+        max-width: 206px;
+        padding: 16px;
+        background-color: $white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+        .block__item-image {
+          display: block;
+          width: 46px;
+          height: 46px;
+          margin-bottom: 16px;
+          object-fit: contain;
+        }
+        .descr {
+          font-size: 15px;
+          &.bold {
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1680px) {
+}
+@media (max-width: 1440px) {
+  .block-main .block__left {
+    max-width: 500px;
+  }
+  .block-main .block__right {
+    max-width: 550px;
+  }
+  .block-main .block__right .block__items .block__item {
+    max-width: 174px;
+  }
+  .block-main .block__right .block__items .block__item .block__item-image {
+    width: 38px;
+    height: 38px;
+  }
+  .block-main .block__right .block__items .block__item .descr.bold {
+    font-size: 16px;
+  }
+  .block-main .block__right .block__items .block__item .descr {
+    font-size: 13px;
+    br {
+      display: none;
+    }
+  }
+  .block-main .block__right .block__image {
+    max-width: 520px;
+  }
+  .block-main .block__left .h1 {
+    font-size: 48px;
+  }
+  .block-main .block__left .descr {
+    font-size: 20px;
+  }
+  .block-main .block__left .block__container .block__container-title {
+    font-size: 26px;
+  }
+  .block-main .block__left .block__container .block__container-descr {
+    font-size: 19px;
+  }
+  .block-main .wpcf7 .wpcf7-form .wpcf7-list-item label .wpcf7-list-item-label {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1199px) {
+  .block-main .block__left {
+    max-width: calc(100% - 560px);
+  }
+  .block-main .block__left .h1 {
+    font-size: 42px;
+  }
+  .block-main .block__left .descr {
+    font-size: 18px;
+  }
+  .block-main .block__left .block__container .block__container-title {
+    font-size: 22px;
+  }
+  .block-main .block__left .block__container .block__container-descr {
+    font-size: 17px;
+  }
+}
+@media (max-width: 991px) {
+  .block-main .block__left,
+  .block-main .block__right {
+    max-width: 580px;
+    margin: 0 auto 40px auto;
+  }
+  .block-main .block__left .descr {
+    margin-bottom: 0;
+  }
+  .block-main .block__left .h1 br,
+  .block-main .block__left .descr br {
+    display: none;
+  }
+  .block-main .block__right .block__image {
+    max-width: 100%;
+    height: inherit;
+    margin: 0 auto 24px auto;
+  }
+  .block-main .block__right .block__items {
+    position: relative;
+    right: 0;
+    margin-bottom: 40px;
+  }
+  .block-main .block__right .block__items .block__item {
+    max-width: calc(33% - 8px);
+  }
+  .block-main .block__right .block__container {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: $text;
+    border-radius: 12px;
+    .block__container-title {
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 20px;
+      color: $white;
+    }
+    .block__container-descr {
+      display: block;
+      width: 100%;
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 16px;
+      color: $white;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .block-main {
+    padding-top: 40px;
+  }
+  .block-main .block__left,
+  .block-main .block__right .block__items {
+    margin-bottom: 24px;
+  }
+  .block-main .block__right {
+    margin-bottom: 0;
+  }
+  .block-main .block__left .h1 {
+    font-size: 36px;
+  }
+  .block-main .block__right .block__items .block__item {
+    max-width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .block-main .block__right .block__items .block__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .block-main .block__right .block__items .block__item .descr.bold {
+    max-width: calc(100% - 48px);
+  }
+}
+@media (max-width: 460px) {
+  .block-main .block__left .h1 {
+    font-size: 32px;
+  }
+}
+@media (max-width: 400px) {
+}
