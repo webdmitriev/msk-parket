@@ -1,5 +1,6 @@
 .block-05,
-.block-08 {
+.block-08,
+.block-main {
   .wpcf7 {
     .wpcf7-form {
       .wpcf7-form-control-wrap {
@@ -169,6 +170,20 @@
   opacity: 1 !important;
   filter: none !important;
   border: 1px solid $white;
+}
+
+.block-main .wpcf7 .wpcf7-form .wpcf7-list-item label .wpcf7-list-item-label {
+  color: $white;
+}
+
+.block-main .wpcf7 .wpcf7-form .wpcf7-list-item label .wpcf7-list-item-label:before {
+  border-color: $white;
+}
+.block-main .wpcf7 .wpcf7-form .wpcf7-list-item label .wpcf7-list-item-label:after {
+  background: url("../img/icons/icon-checkbox-white.svg") center / contain no-repeat;
+}
+.block-main .block__left .block__container .wpcf7-form-control-wrap .wpcf7-list-item {
+  margin-left: 0;
 }
 
 @media (max-width: 768px) {

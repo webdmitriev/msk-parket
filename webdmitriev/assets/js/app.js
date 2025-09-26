@@ -116,7 +116,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ******************************
+  // rearrangeElements
+  // main-block - перестановка html
+  // ******************************
+  function mainBlock() {
+    const $blockMain = $(".block-main");
 
+    if ($(window).width() < 991) {
+      // (мобильная версия)
+      $blockMain.each(function () {
+        const $item = $(this);
+        const $form = $item.find(".block__container");
+        const $blockRight = $item.find(".block__right");
+        console.log($form);
+
+        $form.appendTo($blockRight);
+      });
+    } else {
+      // (десктопная версия)
+      $blockMain.each(function () {
+        const $item = $(this);
+        const $form = $item.find(".block__container");
+        const $blockLeft = $item.find(".block__left");
+        console.log($form);
+
+        $form.appendTo($blockLeft);
+      });
+    }
+  }
+
+  // Запускаем при загрузке и ресайзе
+  $(document).ready(mainBlock);
+  $(window).on("resize", mainBlock);
 
 
 
