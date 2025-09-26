@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  //console.log("Start");
+  // *******
+  // SLIDERS
+  // *******
   $('.block-08 .grinding__slider').each(function () {
     const slider = $(this);
     slider.slick({
@@ -48,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })
 
+  // *******************
+  // rating for block-09
+  // *******************
   document.querySelectorAll('.rating-stars').forEach((el, index) => {
     const rating = parseFloat(el.dataset.rating) || 0;
     const full = Math.floor(rating);
@@ -86,6 +91,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     el.innerHTML = html;
   });
+
+  // *********
+  // accordion
+  // *********
+  $(document).ready(function () {
+    $(".accordion__item-header").on("click", function () {
+      const item = $(this).closest(".accordion__item");
+      const content = item.find(".accordion__item-content");
+
+      if (item.hasClass("active")) {
+        // если уже открыт → закрываем
+        content.stop().slideUp(300);
+        item.removeClass("active");
+      } else {
+        // закрываем все остальные
+        $(".accordion__item-content").stop().slideUp(300);
+        $(".accordion__item").removeClass("active");
+
+        // открываем текущий
+        content.stop().slideDown(300);
+        item.addClass("active");
+      }
+    });
+  });
+
 
 
 
