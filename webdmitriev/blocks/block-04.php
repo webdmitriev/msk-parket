@@ -10,12 +10,20 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 
 $allowed_tags = array(
-  'br'  => array()
+  'br'    => array(),
+  'span'  => array(
+    'class' => array(),
+  )
 );
 
-$text     = wp_kses(get_field('text'), $allowed_tags);
-$link     = esc_url(get_field('link'));
-$bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field('bg_1920')) . ")"  : false;
+$block_id       = wp_kses(get_field('block_id'), $allowed_tags);
+$block_bgc      = get_field('block_bgc') ? 'background-color:' . get_field('block_bgc') : false;
+
+$elements_left  = get_field('elements_left'); // descr
+$counter        = 0;
+
+$elements_right = get_field('elements_right'); // descr
+$image          = esc_url(get_field('image'));
 
 ?>
 
@@ -30,20 +38,24 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
   <?php if( !is_admin() ) : ?>
     <div class="container">
       <div class="line-wrap">
-        <picture>
-          <source srcset="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-04/image-01.jpg" type="image/jpeg" media="(max-width: 991px)" />
-          <img class="block-image" src="<?= $image_base64; ?>" data-src="<?= $bg_1920; ?>" alt="Image" />
-        </picture>
+        <?php if($image): ?>
+          <picture>
+            <source srcset="<?= $image; ?>" type="image/jpeg" media="(max-width: 991px)" />
+            <img class="block-image" src="<?= $image_base64; ?>" data-src="<?= $image_base64; ?>" alt="Image" />
+          </picture>
+        <?php endif; ?>
         <div class="block__items">
-          <div class="block__item descr" data-number="01.">Прибыв на&nbsp;объект, специалисты сначала осматривают напольное покрытие, выявляют проблемные зоны&nbsp;&mdash; щели, сколы, вздутия&nbsp;&mdash; и&nbsp;при необходимости проводят предварительный ремонт.</div>
-          <div class="block__item descr" data-number="02.">Далее начинается грубая шлифовка барабанной машиной, снимается старый лак и&nbsp;нивелируются неровности.</div>
-          <div class="block__item descr" data-number="03.">Затем происходит обработка каждого участка, включая углы и&nbsp;труднодоступные места, с&nbsp;помощью угловой и&nbsp;ленточной шлифмашин. Пыль в&nbsp;процессе минимизируется с&nbsp;помощью профессиональных пылесосов, подключаемых к&nbsp;оборудованию.</div>
-          <div class="block__item descr" data-number="04.">После выравнивания поверхности и&nbsp;устранения всех дефектов переходим к&nbsp;более тонкой шлифовке с&nbsp;постепенным уменьшением зернистости абразива&nbsp;&mdash; так достигается идеально гладкая основа. При необходимости проводится циклевка вручную в&nbsp;зонах стыков.</div>
+          <?php if( have_rows('elements_left') ) : while ( have_rows('elements_left') ) : the_row(); ?>
+            <?php $counter++; ?>
+            <div class="block__item descr" data-number="<?= $counter <= 9 ? '0'.$counter.'.' : $counter.'.'; ?>"><?php echo wp_kses(get_sub_field('descr'), $allowed_tags); ?></div>
+          <?php endwhile; endif; ?>
         </div>
-        <div class="block__items">
-          <img class="block__items-image" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-04/image-01.jpg" alt="Image" />
-          <div class="block__item descr" data-number="05.">Затем наносится грунтовка (если это требуется) и&nbsp;несколько слоёв лака или масла, в&nbsp;зависимости от&nbsp;предпочтений заказчика. Каждый слой тщательно просушивается и&nbsp;полируется.</div>
-          <div class="block__item descr accent-bg" data-number="06.">В&nbsp;итоге заказчик получает полностью обновлённый паркет с&nbsp;ровной, гладкой и&nbsp;прочной поверхностью, пригодной для эксплуатации на&nbsp;долгие годы. </div>
+        <div class="block__items block__items-with_last">
+          <?php if($image): ?><img class="block__items-image" src="<?= $image; ?>" alt="Image" /><?php endif; ?>
+          <?php if( have_rows('elements_right') ) : while ( have_rows('elements_right') ) : the_row(); ?>
+            <?php $counter++; ?>
+            <div class="block__item descr" data-number="<?= $counter <= 9 ? '0'.$counter.'.' : $counter.'.'; ?>"><?php echo wp_kses(get_sub_field('descr'), $allowed_tags); ?></div>
+          <?php endwhile; endif; ?>
         </div>
       </div>
     </div>

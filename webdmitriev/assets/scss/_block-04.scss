@@ -59,6 +59,13 @@
       object-fit: cover;
       border-radius: 8px;
     }
+    &.block__items-with_last .block__item:last-child {
+      color: $white;
+      background-color: var(--accent-color);
+      &:before {
+        color: $white;
+      }
+    }
   }
 }
 

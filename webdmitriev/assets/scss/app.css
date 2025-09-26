@@ -524,6 +524,13 @@ a.btn {
   object-fit: cover;
   border-radius: 8px;
 }
+.block-04 .block__items.block__items-with_last .block__item:last-child {
+  color: #ffffff;
+  background-color: var(--accent-color);
+}
+.block-04 .block__items.block__items-with_last .block__item:last-child:before {
+  color: #ffffff;
+}
 
 @media (max-width: 991px) {
   .block-04 .line-wrap {
