@@ -660,7 +660,7 @@ a.btn {
   display: block;
   width: 100%;
   padding-block: 60px;
-  background: #f5f5f5 url("../img/block-06/bg-1920.jpg") center/cover no-repeat;
+  background: #f5f5f5 center/cover no-repeat;
 }
 .block-06 .h2 {
   margin-bottom: 40px;
@@ -736,6 +736,10 @@ a.btn {
 }
 .block-06 .block__items .block__item:not(:last-child) {
   margin-bottom: 40px;
+}
+.block-06 .block__items .block__item:last-child .block__item-num {
+  color: #ffffff;
+  background-color: var(--accent-color);
 }
 .block-06 .block__bottom {
   display: flex;

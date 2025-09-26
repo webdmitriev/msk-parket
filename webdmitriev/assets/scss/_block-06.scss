@@ -3,7 +3,7 @@
   display: block;
   width: 100%;
   padding-block: 60px;
-  background: #f5f5f5 url("../img/block-06/bg-1920.jpg") center / cover no-repeat;
+  background: #f5f5f5 center / cover no-repeat;
   .h2 {
     margin-bottom: 40px;
   }
@@ -78,6 +78,10 @@
       }
       &:not(:last-child) {
         margin-bottom: 40px;
+      }
+      &:last-child .block__item-num {
+        color: $white;
+        background-color: var(--accent-color);
       }
     }
   }
