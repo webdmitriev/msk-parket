@@ -2,4 +2,8 @@
   .btn.btn-full:hover {
     background-color: var(--accent-color-light);
   }
+
+  .block-08 .grinding-arrows .grinding-arrow:hover svg path {
+    stroke: var(--accent-color);
+  }
 }

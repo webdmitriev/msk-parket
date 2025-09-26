@@ -1,3 +1,6 @@
+@import "../slick/slick.min.css";
+@import "../slick/slick-theme.min.css";
+@import "slick";
 @import "data";
 
 // Blocks
@@ -8,7 +11,9 @@
 @import "block-05";
 @import "block-06";
 @import "block-07";
+@import "block-08";
 
+@import "wpcf7";
 @import "hover";
 
 @media (max-width: 1680px) {
