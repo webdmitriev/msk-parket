@@ -10,17 +10,25 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 
 $allowed_tags = array(
-  'br'  => array()
+  'br'    => array(),
+  'span'  => array(
+    'class' => array(),
+  )
 );
 
-$text     = wp_kses(get_field('text'), $allowed_tags);
-$link     = esc_url(get_field('link'));
-$bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field('bg_1920')) . ")"  : false;
+$block_id   = wp_kses(get_field('block_id'), $allowed_tags);
+$block_bgc  = get_field('block_bgc') ? 'background-color:' . get_field('block_bgc') : false;
+
+$title      = wp_kses(get_field('title'), $allowed_tags);
+$descr      = wp_kses(get_field('descr'), $allowed_tags);
+$btn_text   = wp_kses(get_field('btn_text'), $allowed_tags);
+$btn_class  = wp_kses(get_field('btn_class'), $allowed_tags);
+$image      = esc_url(get_field('image'));
 
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-01">
+<section class="block-01" id="<?= $block_id; ?>" style="<?= $block_bgc; ?>">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenber-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
@@ -31,12 +39,12 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
     <div class="container">
       <div class="line-wrap">
         <div class="block__content">
-          <h2 class="h2">Шлифовка паркета <br/><span class="accent-color">в&nbsp;Москве</span></h2>
-          <p class="descr">Профессиональная шлифовка паркета в&nbsp;Москве&nbsp;&mdash; это настоящее &laquo;омоложение&raquo; деревянного покрытия. Пол в&nbsp;квартире&nbsp;&mdash; это как лицо: по&nbsp;нему легко судить о&nbsp;вкусе, ухоженности и&nbsp;даже характере хозяев. Но&nbsp;со&nbsp;временем даже самый качественный деревянный пол теряет блеск, покрывается царапинами и&nbsp;тускнеет. Хорошая новость&nbsp;&mdash; всё это можно исправить. <br/><br/>Современные технологии позволяют всего за&nbsp;1&nbsp;день вернуть полу былую роскошь, сделать его ровным, гладким и&nbsp;безупречно блестящим&nbsp;&mdash; как будто вы&nbsp;только что постелили новый паркет. И&nbsp;всё это&nbsp;&mdash; без пыли, шума и&nbsp;хаоса. И&nbsp;вот как это всё делается в&nbsp;компании <span class="accent-color">&laquo;ЛенПаркет&raquo;</span>.</p>
+          <?php if($title): ?><h2 class="h2"><?= $title; ?></h2><?php endif; ?>
+          <?php if($descr): ?><p class="descr"><?= $descr; ?></p><?php endif; ?>
         </div>
         <div class="block__image">
-          <button class="btn btn-full btn-icon-timer"><span>Закажите выезд мастера на удобное время.</span></button>
-          <img class="block__image-img" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-01/image-01.jpg" alt="Image" />
+          <?php if($btn_text): ?><button class="btn btn-full btn-icon-timer <?= $btn_class; ?>"><span><?= $btn_text; ?></span></button><?php endif; ?>
+          <?php if($image): ?><img class="block__image-img" src="<?= $image; ?>" alt="Image" /><?php endif; ?>
         </div>
       </div>
     </div>
