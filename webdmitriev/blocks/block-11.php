@@ -10,17 +10,26 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 
 $allowed_tags = array(
-  'br'  => array()
+  'br'    => array(),
+  'span'  => array(
+    'class' => array(),
+  )
 );
 
-$text     = wp_kses(get_field('text'), $allowed_tags);
-$link     = esc_url(get_field('link'));
-$bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field('bg_1920')) . ")"  : false;
+$block_id   = wp_kses(get_field('block_id'), $allowed_tags);
+$block_bgc  = get_field('block_bgc') ? 'background-color:' . get_field('block_bgc') : false;
+
+$title      = wp_kses(get_field('title'), $allowed_tags);
+$image      = esc_url(get_field('image'));
+$descr      = wp_kses(get_field('descr'), $allowed_tags);
+
+$btn_text   = wp_kses(get_field('btn_text'), $allowed_tags);
+$btn_class  = wp_kses(get_field('btn_class'), $allowed_tags);
 
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-11" style="<?php echo $bg_1920; ?>">
+<section class="block-11" id="<?= $block_id; ?>" style="<?= $block_bgc; ?>">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenberg-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
@@ -30,11 +39,11 @@ $bg_1920  = get_field('bg_1920') ? "background-image: url(" . esc_url(get_field(
   <?php if( !is_admin() ) : ?>
     <div class="container">
       <div class="line-wrap">
-        <img class="block__image" src="<?php echo esc_url($url); ?>/webdmitriev/assets/img/block-11/image-01.png" alt="Image" />
+        <?php if($image): ?><img class="block__image" src="<?= $image; ?>" alt="Image" /><?php endif; ?>
         <div class="block__content">
-          <h4 class="block__content-title">Шлифовка паркета в&nbsp;Москве&nbsp;&mdash; это возможность вдохнуть жизнь в&nbsp;ваш пол без замены покрытия.</h4>
-          <p class="descr">Специалисты &laquo;ЛенПаркет&raquo; сделают всё, чтобы результат радовал вас годами&nbsp;&mdash; от&nbsp;первой стружки до&nbsp;последнего слоя лака. Звоните, пишите, заказывайте&nbsp;&mdash; мы&nbsp;уже готовим шлифовальную машину к&nbsp;выезду.</p>
-          <button class="btn btn-transparent"><span>Оформите заявку</span></button>
+          <?php if($title): ?><h4 class="block__content-title"><?= $title; ?></h4><?php endif; ?>
+          <?php if($descr): ?><p class="descr"><?= $descr; ?></p><?php endif; ?>
+          <?php if($btn_text): ?><button class="btn btn-transparent <?= $btn_class; ?>"><span><?= $btn_text; ?></span></button><?php endif; ?>
         </div>
       </div>
     </div>
