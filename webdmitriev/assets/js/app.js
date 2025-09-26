@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+
+  $('.burger-menu').on('click', function () {
+    $('.header-mobile').addClass('active')
+  })
+  $('.burger-close').on('click', function () {
+    $('.header-mobile').removeClass('active')
+  })
+
   // *******
   // SLIDERS
   // *******

@@ -1,5 +1,16 @@
 <?php
 
+function webdmitriev_register_menus() {
+  register_nav_menus(
+    array(
+      'header-menu' => esc_html__('Header Menu', 'webdmitriev'),
+      'footer-menu' => esc_html__('Footer Menu', 'webdmitriev'),
+      'mobile-menu' => esc_html__('Mobile Menu', 'webdmitriev'),
+    )
+  );
+}
+add_action('after_setup_theme', 'webdmitriev_register_menus');
+
 /**
  * Preconnect для оптимизации загрузки шрифтов
  */

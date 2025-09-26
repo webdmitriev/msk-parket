@@ -158,6 +158,9 @@
   }
 }
 @media (max-width: 1199px) {
+  .block-main {
+    padding-top: 45px;
+  }
   .block-main .block__left {
     max-width: calc(100% - 560px);
   }
