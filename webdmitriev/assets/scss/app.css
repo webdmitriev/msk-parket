@@ -1233,6 +1233,154 @@ a.btn {
     margin-left: 0;
   }
 }
+.block-09 {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-block: 60px;
+  background-color: #ffffff;
+}
+.block-09 .h2 {
+  margin-bottom: 40px;
+}
+.block-09 .varnishes__arrows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+.block-09 .varnishes__arrows .varnishes__arrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: #ffffff;
+  border: 1px solid rgba(40, 33, 31, 0.1);
+  border-radius: 100px;
+}
+.block-09 .varnishes__arrows .varnishes__arrow svg {
+  display: block;
+  width: 10px;
+  height: 20px;
+  object-fit: contain;
+}
+.block-09 .varnishes__arrows .varnishes__arrow svg path {
+  transition: all 0.4s ease;
+}
+.block-09 .varnishes__arrows .varnishes__arrow.varnishes__arrow-prev svg {
+  transform: rotate(180deg) translateX(2px);
+}
+.block-09 .varnishes__arrows .varnishes__arrow.varnishes__arrow-next svg {
+  transform: translateX(2px);
+}
+.block-09 .varnishes__slider .varnishes__slide {
+  position: relative;
+  display: block;
+  width: 304px;
+  margin-right: 24px;
+  padding-bottom: 120px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-image {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content {
+  display: block;
+  padding: 24px 16px;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content > .descr.accent-color {
+  font-weight: 500;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  display: block;
+  width: 100%;
+  max-width: calc(100% - 32px);
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom .varnishes__slide-bottom-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom .varnishes__slide-bottom-stack .varnishes__slide-descr {
+  display: block;
+  width: 100%;
+  max-width: calc(100% - 90px);
+  font-weight: 300;
+  font-size: 15px;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom .varnishes__slide-bottom-stack .rating-stars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+  max-width: 84px;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom .varnishes__slide-bottom-stack .rating-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: #ccc;
+  object-fit: contain;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom .varnishes__slide-bottom-stack .rating-stars svg.full {
+  fill: gold;
+}
+.block-09 .varnishes__slider .varnishes__slide .varnishes__slide-content .varnishes__slide-bottom .descr.accent-color {
+  font-weight: 600;
+}
+.block-09 .varnishes__slider .slick-dots {
+  margin-top: 40px;
+}
+.block-09 .slick-track {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+.block-09 .slick-slide {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: inherit !important;
+}
+
+@media (max-width: 768px) {
+  .block-09 .h2,
+  .block-09 .varnishes__arrows {
+    margin-bottom: 24px;
+  }
+  .block-09 .varnishes__slider .slick-dots {
+    margin-top: 30px;
+  }
+  .block-09 .slick-dotted.slick-slider {
+    margin-bottom: 8px;
+  }
+}
+@media (max-width: 576px) {
+  .block-09 {
+    padding-block: 40px;
+  }
+}
 .block-05 .wpcf7 .wpcf7-form .wpcf7-form-control-wrap input,
 .block-08 .wpcf7 .wpcf7-form .wpcf7-form-control-wrap input {
   display: block;
