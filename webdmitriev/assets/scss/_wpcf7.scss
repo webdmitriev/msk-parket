@@ -24,7 +24,8 @@
           }
         }
       }
-      input[type="submit"] {
+      input[type="submit"],
+      button[type="submit"] {
         display: block;
         width: 100%;
         max-width: 400px;
@@ -176,6 +177,13 @@
   color: $white;
 }
 
+.block-main .wpcf7 .wpcf7-form .wpcf7-form-control-wrap input {
+  background-color: $white;
+  border-color: $white;
+  &::placeholder {
+    color: $text;
+  }
+}
 .block-main .wpcf7 .wpcf7-form .wpcf7-list-item label .wpcf7-list-item-label:before {
   border-color: $white;
 }
@@ -184,6 +192,16 @@
 }
 .block-main .block__left .block__container .wpcf7-form-control-wrap .wpcf7-list-item {
   margin-left: 0;
+}
+.block-main .wpcf7 form.invalid .wpcf7-response-output,
+.block-main .wpcf7 form.unaccepted .wpcf7-response-output,
+.block-main .wpcf7 form.payment-required .wpcf7-response-output {
+  color: $white;
+}
+
+.block-08 .wpcf7 .wpcf7-form input[type="submit"],
+.block-08 .wpcf7 .wpcf7-form button[type="submit"] {
+  border: 1px solid $white;
 }
 
 @media (max-width: 768px) {

@@ -255,6 +255,9 @@
   }
 }
 @media (max-width: 768px) {
+  .header .header__contacts .header__contacts-mobile {
+    margin-block: 4px;
+  }
 }
 @media (max-width: 576px) {
 }

@@ -1,5 +1,191 @@
 @import "../slick/slick.min.css";
 @import "../slick/slick-theme.min.css";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+a {
+  text-decoration: none;
+}
+a:active, a:hover {
+  outline: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: 0;
+}
+
+img,
+audio,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+audio,
+canvas,
+iframe,
+video,
+img,
+svg {
+  vertical-align: middle;
+}
+
+iframe {
+  border: 0;
+}
+
+textarea {
+  resize: none; /*remove the resize handle on the bottom right*/
+  overflow: auto;
+  vertical-align: top;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+input,
+textarea,
+select,
+button {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+button,
+input {
+  line-height: normal;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
+
+ul {
+  list-style: none;
+}
+
 .slick-dots {
   position: relative;
   bottom: 0;
@@ -47,6 +233,10 @@
   border: 1px solid var(--accent-color);
   transform: translate(-50%, -50%);
   border-radius: 100px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
 }
 
 .container {
@@ -136,6 +326,11 @@
 
 a.btn {
   text-align: center;
+}
+
+.form__calc > button,
+.header__btn {
+  background-color: var(--accent-color);
 }
 
 .blockquote {
@@ -467,6 +662,11 @@ a.btn {
 @media (max-width: 991px) {
   .header .line-wrap {
     padding-bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .header .header__contacts .header__contacts-mobile {
+    margin-block: 4px;
   }
 }
 @media (max-width: 460px) {
@@ -2339,8 +2539,11 @@ a.btn {
   border: 1px solid rgb(40, 33, 31) !important;
 }
 .block-05 .wpcf7 .wpcf7-form input[type=submit],
+.block-05 .wpcf7 .wpcf7-form button[type=submit],
 .block-08 .wpcf7 .wpcf7-form input[type=submit],
-.block-main .wpcf7 .wpcf7-form input[type=submit] {
+.block-08 .wpcf7 .wpcf7-form button[type=submit],
+.block-main .wpcf7 .wpcf7-form input[type=submit],
+.block-main .wpcf7 .wpcf7-form button[type=submit] {
   display: block;
   width: 100%;
   max-width: 400px;
@@ -2355,8 +2558,11 @@ a.btn {
   border-radius: 60px;
 }
 .block-05 .wpcf7 .wpcf7-form input[type=submit]:disabled,
+.block-05 .wpcf7 .wpcf7-form button[type=submit]:disabled,
 .block-08 .wpcf7 .wpcf7-form input[type=submit]:disabled,
-.block-main .wpcf7 .wpcf7-form input[type=submit]:disabled {
+.block-08 .wpcf7 .wpcf7-form button[type=submit]:disabled,
+.block-main .wpcf7 .wpcf7-form input[type=submit]:disabled,
+.block-main .wpcf7 .wpcf7-form button[type=submit]:disabled {
   background-color: gray;
 }
 .block-05 .wpcf7 .wpcf7-form .wpcf7-spinner,
@@ -2519,6 +2725,14 @@ a.btn {
   color: #ffffff;
 }
 
+.block-main .wpcf7 .wpcf7-form .wpcf7-form-control-wrap input {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+.block-main .wpcf7 .wpcf7-form .wpcf7-form-control-wrap input::placeholder {
+  color: #28211f;
+}
+
 .block-main .wpcf7 .wpcf7-form .wpcf7-list-item label .wpcf7-list-item-label:before {
   border-color: #ffffff;
 }
@@ -2529,6 +2743,17 @@ a.btn {
 
 .block-main .block__left .block__container .wpcf7-form-control-wrap .wpcf7-list-item {
   margin-left: 0;
+}
+
+.block-main .wpcf7 form.invalid .wpcf7-response-output,
+.block-main .wpcf7 form.unaccepted .wpcf7-response-output,
+.block-main .wpcf7 form.payment-required .wpcf7-response-output {
+  color: #ffffff;
+}
+
+.block-08 .wpcf7 .wpcf7-form input[type=submit],
+.block-08 .wpcf7 .wpcf7-form button[type=submit] {
+  border: 1px solid #ffffff;
 }
 
 @media (max-width: 768px) {

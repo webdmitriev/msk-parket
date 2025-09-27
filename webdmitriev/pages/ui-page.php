@@ -5,7 +5,7 @@ $blocks = [
   [
     'name' => 'Block-01',
     'image' => $url.'/webdmitriev/images/block-01.jpg',
-    'video' => $url.'/webdmitriev/images/video-01.mov'
+    'video' => $url.'/webdmitriev/images/msk-parket.mov'
   ]
 ]
 ?>

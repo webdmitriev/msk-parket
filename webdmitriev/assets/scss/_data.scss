@@ -11,6 +11,10 @@ $md: 767;
 $container: 1320px;
 $indent: 10px;
 
+body {
+  font-family: $inter;
+}
+
 .container {
   display: block;
   width: 100%;
@@ -93,6 +97,10 @@ $indent: 10px;
 }
 a.btn {
   text-align: center;
+}
+.form__calc > button,
+.header__btn {
+  background-color: var(--accent-color);
 }
 
 .blockquote {
