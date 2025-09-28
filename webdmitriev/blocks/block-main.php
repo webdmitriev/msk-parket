@@ -23,6 +23,7 @@ $form_label   = wp_kses(get_field('form_label'), $allowed_tags);
 $cf7          = get_field('cf7');
 $elements     = get_field('elements'); // title, icon, descr
 $image        = esc_url(get_field('image'));
+$image_576    = esc_url(get_field('image_576'));
 
 ?>
 
@@ -47,7 +48,12 @@ $image        = esc_url(get_field('image'));
           </div>
         </div>
         <div class="block__right">
-          <?php if($image): ?><img class="block__image" src="<?= $image; ?>" alt="Image" /><?php endif; ?>
+          <?php if($image): ?>
+            <picture>
+              <source srcset="<?= $image_576 ? $image_576 : $image; ?>" type="image/jpeg" media="(max-width: 991px)">
+              <img class="block__image" src="<?= $image; ?>" alt="Image" />
+            </picture>
+          <?php endif; ?>
           <div class="block__items">
             <?php if( have_rows('elements') ) : while ( have_rows('elements') ) : the_row(); ?>
               <div class="block__item">

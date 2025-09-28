@@ -438,7 +438,9 @@ a.btn {
 }
 .header .header__logotype {
   position: relative;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   width: 100%;
   max-width: max-content;
   font-weight: bold;
@@ -494,7 +496,13 @@ a.btn {
   font-size: 16px;
 }
 .header .header__contacts .header__contacts-mobile {
-  display: none;
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.6;
+  text-decoration: none;
+  color: #28211f;
 }
 .header .header__contacts a.descr {
   display: block;
@@ -667,6 +675,12 @@ a.btn {
 @media (max-width: 768px) {
   .header .header__contacts .header__contacts-mobile {
     margin-block: 4px;
+  }
+}
+@media (max-width: 576px) {
+  .header .line-wrap {
+    gap: 16px;
+    padding-block: 16px;
   }
 }
 @media (max-width: 460px) {
@@ -1129,6 +1143,9 @@ a.btn {
   }
 }
 @media (max-width: 576px) {
+  .block-main {
+    padding-top: 10px;
+  }
   .block-main .block__right .block__items .block__item {
     display: flex;
     flex-wrap: wrap;

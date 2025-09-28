@@ -248,6 +248,9 @@
   }
 }
 @media (max-width: 576px) {
+  .block-main {
+    padding-top: 10px;
+  }
   .block-main .block__right .block__items .block__item {
     display: flex;
     flex-wrap: wrap;
