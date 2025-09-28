@@ -1,7 +1,7 @@
 <?php
 /**
  * Conference - Block
- */
+ */ 
 
 $block_path = 'block-main';
 $gutenberg_title = 'Block - main';
@@ -28,7 +28,7 @@ $image_576    = esc_url(get_field('image_576'));
 ?>
 
 <!-- <?= $block_path; ?> (start) -->
-<section class="block-main"> 
+<section class="block-main">
   <?php if( is_admin() ) : ?>
     <style>[data="gutenberg-preview-img"] img {width: 100%;object-fit: contain;}</style>
     <div class="gutenberg-block" style="padding: 10px 20px;background-color: #F5F5F5;border: 1px solid #D1D1D1;"><?= $gutenberg_title; ?></div>
